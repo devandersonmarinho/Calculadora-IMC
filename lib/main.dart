@@ -13,6 +13,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController weightController = TextEditingController();
+  TextEditingController heightController = TextEditingController();
+
+  String _InfoText = "Informe seus dados!";
+
+  void _resetFilds(){
+    weightController.text = "";
+    heightController.text = "";
+    _InfoText = "Informe seus dados!";
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +34,7 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.refresh),
-            onPressed: () {},
+            onPressed: _resetFilds,
           )
         ],
       ),
@@ -45,6 +56,7 @@ class _HomeState extends State<Home> {
                   labelStyle: TextStyle(color: Colors.green)),
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.green, fontSize: 25.0),
+              controller: weightController,
             ),
             TextField(
               keyboardType: TextInputType.number,
@@ -53,22 +65,24 @@ class _HomeState extends State<Home> {
                   labelStyle: TextStyle(color: Colors.green)),
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.green, fontSize: 25.0),
+              controller: heightController,
             ),
             Padding(
-                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
-            child: Container(
-              height: 50.0,
-              child: RaisedButton(
-                onPressed: () {},
-                child: Text(
-                  "Calcular",
-                  style: TextStyle(color: Colors.white, fontSize: 25.0),
+              padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+              child: Container(
+                height: 50.0,
+                child: RaisedButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Calcular",
+                    style: TextStyle(color: Colors.white, fontSize: 25.0),
+                  ),
+                  color: Colors.green,
                 ),
-                color: Colors.green,
               ),
-            ),),
+            ),
             Text(
-              'Info',
+              _InfoText,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.green, fontSize: 25.0),
             ),
