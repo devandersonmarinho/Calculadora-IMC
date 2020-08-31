@@ -21,7 +21,9 @@ class _HomeState extends State<Home> {
   void _resetFilds() {
     weightController.text = "";
     heightController.text = "";
-    _InfoText = "Informe seus dados!";
+    setState(() {
+      _InfoText = "Informe seus dados!";
+    });
   }
 
   void _calculate() {
